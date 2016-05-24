@@ -6,6 +6,7 @@ import AppBar from 'material-ui/AppBar';
 import firebase from 'firebase';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import update from 'react-addons-update';
 
 const config = {
     apiKey: "AIzaSyBQA2T1JEm51AH64YPcA-5jdyQi9aUV9cg",
@@ -13,32 +14,38 @@ const config = {
     databaseURL: "https://react-chat-ebab2.firebaseio.com",
     storageBucket: "react-chat-ebab2.appspot.com",
 };
-firebase.initializeApp(config);
-const database = firebase.database();
+
 
 export default class App extends Component {
   constructor () {
     super();
+    firebase.initializeApp(config);
+    this.database = firebase.database();
+
     this.state = {
-      messages: []
+      messages: {}
     }
   }
 
   componentDidMount () {
-    this.firebaseRef = database.ref('messages');
-    this.firebaseRef.once('value').then((data) => {
-      let messagesVal = data.val();
-      let messages = _(messagesVal)
-          .keys()
-          .map((messageKey) => {
-            let cloned = _.clone(messagesVal[messageKey]);
-            cloned.key = messageKey;
-            return cloned;
-          })
-          .value();
-      this.setState({
-        messages: messages
-      });
+    this.firebaseRef = this.database.ref('messages');
+    this.firebaseRef.off();
+    this.firebaseRef.on('child_added', (data) => {
+      if(this.state.messages[data.key]) {
+        return;
+      }
+
+      let messageVal = data.val();
+      let setUpdate = {};
+      setUpdate[data.key] = { $set: messageVal }
+      let newState = update(this.state.messages, setUpdate);
+      this.setState({ messages: newState});
+    });
+
+    this.firebaseRef.on('child_removed', (data) => {
+      // check this later
+      delete this.state.messages[data.key];
+      this.setState({ messages: this.state.messages });
     });
   }
 
@@ -50,6 +57,13 @@ export default class App extends Component {
     return {
       muiTheme: getMuiTheme()
     };
+  }
+
+  onNewMessage (message) {
+    let newKey = this.firebaseRef.push().key;
+    let update = {};
+    update[`${newKey}`] = { message: message };
+    this.firebaseRef.update(update);
   }
 
   render() {
@@ -68,9 +82,9 @@ export default class App extends Component {
               iconClassNameRight="muidocs-icon-navigation-expand-more" />
           <div style={ containerStyle }>
             <ChannelList />
-            <MessageList messages={ this.state.messages } />
+            <MessageList messages={ _.values(this.state.messages) } />
           </div>
-          <MessageBox />
+          <MessageBox onNewMessage={ this.onNewMessage.bind(this) }/>
         </div>
       </MuiThemeProvider>
     );
