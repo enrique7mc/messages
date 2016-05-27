@@ -2,6 +2,13 @@ import alt from '../alt';
 import firebase from '../services/firebaseService';
 
 class Actions {
+  constructor() {
+    this.generateActions(
+      'channelsReceived',
+      'channelsFailed'
+    );
+  }
+
   login (args) {
     return (dispatch) => {
       var provider = new firebase.auth.GoogleAuthProvider();

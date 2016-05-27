@@ -37,6 +37,7 @@ class App extends Component {
       if(this.state.messages[data.key]) {
         return;
       }
+      console.log(data.val());
 
       let messageVal = data.val();
       let setUpdate = {};
