@@ -1,30 +1,33 @@
 import React, { Component } from 'react';
+import connectToStores from 'alt-utils/lib/connectToStores';
+import ChatStore from '../stores/ChatStore';
 import ChannelList from './ChannelList';
 import MessageBox from './MessageBox';
 import MessageList from './MessageList';
+import Login from './Login';
 import AppBar from 'material-ui/AppBar';
-import firebase from 'firebase';
+import firebase from '../services/firebaseService';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import update from 'react-addons-update';
 
-const config = {
-    apiKey: "AIzaSyBQA2T1JEm51AH64YPcA-5jdyQi9aUV9cg",
-    authDomain: "react-chat-ebab2.firebaseapp.com",
-    databaseURL: "https://react-chat-ebab2.firebaseio.com",
-    storageBucket: "react-chat-ebab2.appspot.com",
-};
-
-
-export default class App extends Component {
+@connectToStores
+class App extends Component {
   constructor () {
     super();
-    firebase.initializeApp(config);
     this.database = firebase.database();
 
     this.state = {
       messages: {}
     }
+  }
+
+  static getStores () {
+    return [ChatStore];
+  }
+
+  static getPropsFromStores () {
+    return ChatStore.getState();
   }
 
   componentDidMount () {
@@ -73,6 +76,19 @@ export default class App extends Component {
       maxWidth: 1200,
       width: '100%',
       margin: '30px auto 30px'
+    };
+
+    let view = <Login />;
+    if (this.props.user) {
+      view = (
+        <div>
+          <div style={ containerStyle }>
+            <ChannelList />
+            <MessageList messages={ _.values(this.state.messages) } />
+          </div>
+          <MessageBox onNewMessage={ this.onNewMessage.bind(this) }/>
+        </div>
+      );
     }
     return (
       <MuiThemeProvider muiTheme={ getMuiTheme() }>
@@ -80,13 +96,11 @@ export default class App extends Component {
           <AppBar
               title="Awesome Chat"
               iconClassNameRight="muidocs-icon-navigation-expand-more" />
-          <div style={ containerStyle }>
-            <ChannelList />
-            <MessageList messages={ _.values(this.state.messages) } />
-          </div>
-          <MessageBox onNewMessage={ this.onNewMessage.bind(this) }/>
+          { view }
         </div>
       </MuiThemeProvider>
     );
   }
 }
+
+export default App;
