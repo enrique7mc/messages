@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import { ListItem } from 'material-ui/List';
 
-export default class Channel extends Component {
-  constructor (props) {
-    super(props);
+const Channel = (props) => {
+  let style = {};
+  if (props.channel.selected) {
+    style.backgroundColor = '#f0f0f0';
   }
 
-  render () {
-    let style = {};
-    if (this.props.channel.selected) {
-      console.log('selected');
-      style.backgroundColor = '#f0f0f0';
-    }
-
-    return (
-      <ListItem style={ style }>
-        { this.props.channel.name }
-      </ListItem>
-    );
-  }
+  return (
+    <ListItem style={ style }>
+      { props.channel.name }
+    </ListItem>
+  );
 }
+
+export default Channel;
