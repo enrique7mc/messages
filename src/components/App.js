@@ -32,11 +32,11 @@ class App extends Component {
 
   componentDidMount () {
     this.firebaseRef = this.database.ref('messages');
-    this.firebaseRef.off();
+    /* this.firebaseRef.off();
     this.firebaseRef.on('child_added', (data) => {
       if(this.state.messages[data.key]) {
         return;
-      }      
+      }
 
       let messageVal = data.val();
       let setUpdate = {};
@@ -49,7 +49,7 @@ class App extends Component {
       // check this later
       delete this.state.messages[data.key];
       this.setState({ messages: this.state.messages });
-    });
+    });*/
   }
 
   static childContextTypes = {

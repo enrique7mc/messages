@@ -5,7 +5,7 @@ import { ListItem } from 'material-ui/List';
 const Message = (props) => {
   return (
     <ListItem
-      leftAvatar={<Avatar src='https://placehold.it/100x100' />}>
+      leftAvatar={<Avatar src={ props.profilePic } />}>
       { props.message }
     </ListItem>
   );

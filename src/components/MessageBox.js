@@ -13,7 +13,7 @@ export default class MessageBox extends Component {
 
   onChange (e) {
     this.setState({
-      message: e.target.vale
+      message: e.target.value
     });
   }
 

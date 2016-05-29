@@ -2,15 +2,49 @@ import alt from '../alt';
 import Actions from '../actions';
 import { decorate, bind, datasource } from 'alt-utils/lib/decorators';
 import ChannelSource from '../sources/ChannelSource';
+import MessageSource from '../sources/MessageSource';
 import _ from 'lodash';
 
-@datasource(ChannelSource)
+@datasource(ChannelSource, MessageSource)
 @decorate(alt)
 class ChatStore {
   constructor () {
     this.state = {
-      user: null
+      user: null,
+      messageS: null
     };
+  }
+
+  @bind(Actions.messagesReceived)
+  receivedMessages (messages) {
+    console.log(messages);
+    _(messages)
+      .keys()
+      .forEach((k) => {
+        messages[k].key = k;
+      });
+
+   this.setState({
+     messages
+   });
+  }
+
+  @bind(Actions.channelOpened)
+  channelOpened (selectedChannel) {
+    // TODO: avoid modify this.state directly
+    _(this.state.channels)
+      .values()
+      .forEach((channel) => {
+        channel.selected = false;
+      });
+
+    selectedChannel.selected = true;
+    this.setState({
+      channels: this.state.channels,
+      selectedChannel
+    });
+
+    setTimeout(this.getInstance().getMessages, 100);
   }
 
   @bind(Actions.channelsReceived)
@@ -20,7 +54,7 @@ class ChatStore {
 
     _(channels)
       .keys()
-      .forEach((key, index) => {        
+      .forEach((key, index) => {
         returnedChannels[key] = channels[key];
         returnedChannels[key].key = key;
         if (index === 0){
@@ -33,6 +67,8 @@ class ChatStore {
       channels: returnedChannels,
       selectedChannel
     });
+
+    setTimeout(this.getInstance().getMessages, 100);
   }
 
   @bind(Actions.login)

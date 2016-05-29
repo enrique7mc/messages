@@ -1,0 +1,30 @@
+{
+  "channels" : {
+    "flux" : {
+      "name" : "flux 2"
+    },
+    "react" : {
+      "name" : "react"
+    },
+    "webpack" : {
+      "name" : "webpack"
+    }
+  },
+  "messages" : {
+    "-KIoXhIHBJs5oevYHk1E" : {
+      "message" : "sadasd\n"
+    },
+    "-KIoXsAEA3u0NZy52BMH" : {
+      "message" : "sadasdad\n"
+    },
+    "-KIoXu22suh0hbyNPosD" : {
+      "message" : "hello\n"
+    },
+    "-KIxO1OR7wA09CFZOxel" : {
+      "message" : "new message\n"
+    },
+    "-KIxSJx484zdup0XJ8oa" : {
+      "message" : "another message\n"
+    }
+  }
+}
