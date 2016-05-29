@@ -13,6 +13,7 @@ class Actions {
       'sendMessage',
       'messageSendSuccess',
       'messageSendError',
+      'messageReceived'
     );
   }
 

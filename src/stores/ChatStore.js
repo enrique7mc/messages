@@ -24,6 +24,26 @@ class ChatStore {
     });
   }
 
+  @bind(Actions.messageReceived)
+  messagesReceived (message) {
+    if (this.state.messages[message.key]) {
+      return;
+    }
+
+    let setUpdate = {};
+    setUpdate[message.key] = { $set: message }
+    let newState = update(this.state.messages, setUpdate);
+    this.setState({ messages: newState});
+  }
+
+  @bind(Actions.sendMessage)
+  sendMessage(message) {
+    this.setState({
+      message: message
+    });
+    setTimeout(this.getInstance().sendMessage, 10);
+  }
+
   @bind(Actions.messagesReceived)
   receivedMessages (messages) {
     console.log(messages);
