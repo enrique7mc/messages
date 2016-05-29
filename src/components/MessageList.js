@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Message from './Message';
+import CircularProgress from 'material-ui/CircularProgress';
 import Card from 'material-ui/Card';
 import connectToStores from 'alt-utils/lib/connectToStores';
 import ChatStore from '../stores/ChatStore';
@@ -22,8 +23,17 @@ export default class MessageList extends Component {
 
   render () {
     let messagesNodes = null;
-    let { messages } = this.props;
-    if (messages) {
+    let { messages, messagesLoading } = this.props;
+
+    let progressStyle = {
+      paddingTop: 20,
+      paddingBottom: 20,
+      margin: '0 auto',
+      display: 'block',
+      width: 60
+    };
+
+    if (!messagesLoading) {
       messagesNodes = _(messages)
         .keys()
         .map((k) => {
@@ -34,6 +44,8 @@ export default class MessageList extends Component {
           );
         })
         .value();
+    } else {
+      messagesNodes = <CircularProgress style={ progressStyle }/>
     }
 
     const cardStyle = {
