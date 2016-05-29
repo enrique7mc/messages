@@ -4,6 +4,7 @@ import { decorate, bind, datasource } from 'alt-utils/lib/decorators';
 import ChannelSource from '../sources/ChannelSource';
 import MessageSource from '../sources/MessageSource';
 import _ from 'lodash';
+import update from 'react-addons-update';
 
 @datasource(ChannelSource, MessageSource)
 @decorate(alt)

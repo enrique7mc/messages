@@ -9,7 +9,6 @@ import AppBar from 'material-ui/AppBar';
 import firebase from '../services/firebaseService';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import update from 'react-addons-update';
 
 @connectToStores
 class App extends Component {

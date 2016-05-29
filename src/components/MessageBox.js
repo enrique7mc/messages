@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Actions from '../actions';
 import Card from 'material-ui/Card';
 import { ListItem } from 'material-ui/List';
 import trim from 'trim';
@@ -20,10 +21,11 @@ export default class MessageBox extends Component {
   onKeyUp (e) {
     if (e.keyCode === 13 && trim(e.target.value) != '') {
       e.preventDefault();
+
+      Actions.sendMessage(this.state.message);
       this.setState({
         message: ''
       });
-      this.props.onNewMessage(e.target.value);
     }
   }
 
