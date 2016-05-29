@@ -36,8 +36,7 @@ class App extends Component {
     this.firebaseRef.on('child_added', (data) => {
       if(this.state.messages[data.key]) {
         return;
-      }
-      console.log(data.val());
+      }      
 
       let messageVal = data.val();
       let setUpdate = {};

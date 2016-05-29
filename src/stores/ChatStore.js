@@ -17,11 +17,10 @@ class ChatStore {
   receivedChannels(channels) {
     let selectedChannel;
     let returnedChannels = {};
-    console.log(channels);
+
     _(channels)
       .keys()
-      .forEach((key, index) => {
-        console.log(key);
+      .forEach((key, index) => {        
         returnedChannels[key] = channels[key];
         returnedChannels[key].key = key;
         if (index === 0){
@@ -29,7 +28,7 @@ class ChatStore {
           selectedChannel = channels[key];
         }
       });
-    // console.log(returnedChannels);
+
     this.setState({
       channels: returnedChannels,
       selectedChannel
