@@ -20,8 +20,7 @@ class Actions {
   login (browserHistory) {
     return (dispatch) => {
       var provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider).then(function(result) {
-        console.log(result.user);
+      firebase.auth().signInWithPopup(provider).then(function(result) {        
         dispatch(result.user);
         browserHistory.push('/chat');
       }).catch(function(error) {

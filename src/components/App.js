@@ -46,7 +46,7 @@ class App extends Component {
     };
   }
 
-  render() {
+  render() {    
     return (
       <MuiThemeProvider muiTheme={ getMuiTheme() }>
         <div>
