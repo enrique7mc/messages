@@ -15,7 +15,7 @@ const Chat = (props) => {
   return (
     <div>
       <div style={ containerStyle }>
-        <ChannelList />
+        <ChannelList { ...props } />
         <MessageList />
       </div>
       <MessageBox />

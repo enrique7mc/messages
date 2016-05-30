@@ -10,7 +10,18 @@ import List from 'material-ui/List';
 export default class ChannelList extends Component {
   constructor (props) {
     super(props);
-    ChatStore.getChannels();
+  }
+
+  componentDidMount () {
+    this.selectedChannel = this.props.params.channel;
+    ChatStore.getChannels(this.selectedChannel);
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (this.selectedChannel !== nextProps.params.channel) {
+      this.selectedChannel = nextProps.params.channel;
+      ChatStore.getChannels(this.selectedChannel);
+    }
   }
 
   static getStores() {
