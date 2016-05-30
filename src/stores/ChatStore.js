@@ -87,9 +87,10 @@ class ChatStore {
       .forEach((key, index) => {
         returnedChannels[key] = channels[key];
         returnedChannels[key].key = key;
-        if (channels[key].selected){  
+        if (channels[key].selected) {
+          console.log('selected: ' + key);
           selectedChannel = channels[key];
-        }
+        }        
       });
 
     this.setState({

@@ -12,9 +12,9 @@ const Channel = (props) => {
 
   let linkStyle = {
     textDecoration: 'none',
-    color: '#155063'    
+    color: '#155063'
   }
-
+  
   return (
     <ListItem style={ style }>
       <Link to={`/chat/${props.channel.key}`} style={ linkStyle }>

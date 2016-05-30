@@ -66,7 +66,7 @@ export default class ChannelList extends Component {
 
     return (
       <Card style={ cardStyle }>
-        <List>
+        <List style={{backgroundColor: '#FFFFFF'}}>
           { channelNodes }
         </List>
       </Card>
