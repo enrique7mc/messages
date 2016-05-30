@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import connectToStores from 'alt-utils/lib/connectToStores';
+import Chat from './Chat';
 import ChatStore from '../stores/ChatStore';
-import ChannelList from './ChannelList';
-import MessageBox from './MessageBox';
-import MessageList from './MessageList';
 import Login from './Login';
 import AppBar from 'material-ui/AppBar';
 import firebase from '../services/firebaseService';
@@ -69,25 +67,9 @@ class App extends Component {
   }
 
   render() {
-    const containerStyle = {
-      display: 'flex',
-      flowFlow: 'row wrap',
-      maxWidth: 1200,
-      width: '100%',
-      margin: '30px auto 30px'
-    };
-
     let view = <Login />;
     if (this.props.user) {
-      view = (
-        <div>
-          <div style={ containerStyle }>
-            <ChannelList />
-            <MessageList messages={ _.values(this.state.messages) } />
-          </div>
-          <MessageBox onNewMessage={ this.onNewMessage.bind(this) }/>
-        </div>
-      );
+      view = <Chat />;
     }
     return (
       <MuiThemeProvider muiTheme={ getMuiTheme() }>

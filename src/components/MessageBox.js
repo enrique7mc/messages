@@ -57,7 +57,3 @@ export default class MessageBox extends Component {
     );
   }
 }
-
-MessageBox.propTypes = {
-  onNewMessage: PropTypes.func.isRequired
-}
