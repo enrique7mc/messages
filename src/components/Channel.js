@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
-import { ListItem } from 'material-ui/List';
 import Actions from '../actions';
+import { ListItem } from 'material-ui/List';
+import { Link } from 'react-router'
+
 
 const Channel = (props) => {
-  function onClick () {
-    Actions.channelOpened(props.channel);
-  }
-
   let style = {};
   if (props.channel.selected) {
     style.backgroundColor = '#f0f0f0';
   }
 
+  let linkStyle = {
+    textDecoration: 'none',
+    color: '#155063'    
+  }
+
   return (
-    <ListItem onClick={ onClick } style={ style }>
-      { props.channel.name }
+    <ListItem style={ style }>
+      <Link to={`/chat/${props.channel.key}`} style={ linkStyle }>
+        { props.channel.name }
+      </Link>
     </ListItem>
   );
 }
