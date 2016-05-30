@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import Actions from '../actions';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import { browserHistory } from 'react-router';
 
 const Login = (props) => {
   function onClick () {
-    Actions.login();
+    Actions.login(browserHistory);
   }
 
   let cardStyle = {

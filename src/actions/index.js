@@ -17,12 +17,13 @@ class Actions {
     );
   }
 
-  login (args) {
+  login (browserHistory) {
     return (dispatch) => {
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider).then(function(result) {
         console.log(result.user);
         dispatch(result.user);
+        browserHistory.push('/chat');
       }).catch(function(error) {
         console.log(error.message);
       });

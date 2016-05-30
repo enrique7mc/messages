@@ -1,35 +1,22 @@
 import React, { Component } from 'react';
-import connectToStores from 'alt-utils/lib/connectToStores';
-import Chat from './Chat';
-import ChatStore from '../stores/ChatStore';
-import Login from './Login';
 import AppBar from 'material-ui/AppBar';
 import firebase from '../services/firebaseService';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-@connectToStores
 class App extends Component {
   constructor () {
     super();
-    this.database = firebase.database();
-
-    this.state = {
-      messages: {}
-    }
-  }
-
-  static getStores () {
-    return [ChatStore];
-  }
-
-  static getPropsFromStores () {
-    return ChatStore.getState();
+    // this.database = firebase.database();
+    //
+    // this.state = {
+    //   messages: {}
+    // }
   }
 
   componentDidMount () {
-    this.firebaseRef = this.database.ref('messages');
-    /* this.firebaseRef.off();
+    /* this.firebaseRef = this.database.ref('messages');
+    this.firebaseRef.off();
     this.firebaseRef.on('child_added', (data) => {
       if(this.state.messages[data.key]) {
         return;
@@ -59,25 +46,14 @@ class App extends Component {
     };
   }
 
-  onNewMessage (message) {
-    let newKey = this.firebaseRef.push().key;
-    let update = {};
-    update[`${newKey}`] = { message: message };
-    this.firebaseRef.update(update);
-  }
-
   render() {
-    let view = <Login />;
-    if (this.props.user) {
-      view = <Chat />;
-    }
     return (
       <MuiThemeProvider muiTheme={ getMuiTheme() }>
         <div>
           <AppBar
               title="Awesome Chat"
               iconClassNameRight="muidocs-icon-navigation-expand-more" />
-          { view }
+          { this.props.children }
         </div>
       </MuiThemeProvider>
     );
