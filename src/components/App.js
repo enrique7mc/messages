@@ -7,11 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class App extends Component {
   constructor () {
     super();
-    // this.database = firebase.database();
-    //
-    // this.state = {
-    //   messages: {}
-    // }
   }
 
   componentDidMount () {
@@ -46,7 +41,7 @@ class App extends Component {
     };
   }
 
-  render() {    
+  render() {
     return (
       <MuiThemeProvider muiTheme={ getMuiTheme() }>
         <div>
