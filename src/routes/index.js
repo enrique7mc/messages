@@ -36,7 +36,7 @@ function authChanged(user) {
   } else {
     console.log('no user');
   }
-
-  render(<Router routes={ routes } history={ browserHistory } />,
-    document.getElementById('root'));
 }
+
+render(<Router routes={ routes } history={ browserHistory } />,
+  document.getElementById('root'));
