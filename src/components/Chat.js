@@ -6,16 +6,19 @@ import MessageList from './MessageList';
 import connectToStores from 'alt-utils/lib/connectToStores';
 import CountdownStore from '../stores/CountdownStore';
 
+@connectToStores
 class Chat extends Component {
   constructor (props) {
     super(props);
   }
 
+  static getStores () {
     return [CountdownStore];
   }
 
   static getPropsFromStores() {
     return CountdownStore.getState();
+  }
 
   render () {
     const containerStyle = {
@@ -29,6 +32,7 @@ class Chat extends Component {
     return (
       <div>
         <div style={ containerStyle }>
+          <ChannelList { ...this.props } />
           <MessageList />
         </div>
         <MessageBox />
