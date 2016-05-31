@@ -39,6 +39,7 @@ class ChatStore {
 
   @bind(Actions.sendMessage)
   sendMessage(message) {
+    console.log('Chat store: sendMessage');
     this.setState({
       message: message
     });
