@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ChannelList from './ChannelList';
+import CountdownContainer from './CountdownContainer';
 import MessageBox from './MessageBox';
 import MessageList from './MessageList';
 
@@ -19,6 +20,7 @@ const Chat = (props) => {
         <MessageList />
       </div>
       <MessageBox />
+      <CountdownContainer timeleft={ 298 } />
     </div>
   );
 }
