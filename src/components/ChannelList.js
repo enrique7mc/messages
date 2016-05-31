@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
-import connectToStores from 'alt-utils/lib/connectToStores';
-import ChatStore from '../stores/ChatStore';
 import Channel from './Channel';
 import Card from 'material-ui/Card';
 import List from 'material-ui/List';
 
-@connectToStores
 export default class ChannelList extends Component {
   constructor (props) {
     super(props);
@@ -22,14 +19,6 @@ export default class ChannelList extends Component {
       this.selectedChannel = nextProps.params.channel;
       ChatStore.getChannels(this.selectedChannel);
     }
-  }
-
-  static getStores() {
-    return [ChatStore];
-  }
-
-  static getPropsFromStores () {
-    return ChatStore.getState();
   }
 
   render () {

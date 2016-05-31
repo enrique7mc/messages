@@ -4,7 +4,7 @@ import CountdownContainer from './CountdownContainer';
 import MessageBox from './MessageBox';
 import MessageList from './MessageList';
 import connectToStores from 'alt-utils/lib/connectToStores';
-import CountdownStore from '../stores/CountdownStore';
+import ChatStore from '../stores/ChatStore';
 
 @connectToStores
 class Chat extends Component {
@@ -13,11 +13,11 @@ class Chat extends Component {
   }
 
   static getStores () {
-    return [CountdownStore];
+    return [ChatStore];
   }
 
   static getPropsFromStores() {
-    return CountdownStore.getState();
+    return ChatStore.getState();
   }
 
   render () {
@@ -33,7 +33,7 @@ class Chat extends Component {
       <div>
         <div style={ containerStyle }>
           <ChannelList { ...this.props } />
-          <MessageList />
+          <MessageList { ...this.props } />
         </div>
         <MessageBox />
         <CountdownContainer timeleft={ this.props.timeleft } />

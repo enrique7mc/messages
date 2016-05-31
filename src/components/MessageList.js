@@ -2,23 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import Message from './Message';
 import CircularProgress from 'material-ui/CircularProgress';
 import Card from 'material-ui/Card';
-import connectToStores from 'alt-utils/lib/connectToStores';
-import ChatStore from '../stores/ChatStore';
 import List from 'material-ui/List';
 import _ from 'lodash';
 
-@connectToStores
 export default class MessageList extends Component {
   constructor (props) {
     super(props);
-  }
-
-  static getStores () {
-    return [ChatStore];
-  }
-
-  static getPropsFromStores() {
-    return ChatStore.getState();
   }
 
   render () {
@@ -64,5 +53,5 @@ export default class MessageList extends Component {
 }
 
 MessageList.propTypes = {
-  messages: PropTypes.array
+  messages: PropTypes.object
 }

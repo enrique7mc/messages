@@ -13,7 +13,8 @@ class ChatStore {
     this.state = {
       user: null,
       messages: null,
-      messagesLoading: true
+      messagesLoading: true,
+      timeleft: 299
     };
   }
 
@@ -46,7 +47,6 @@ class ChatStore {
 
   @bind(Actions.messagesReceived)
   receivedMessages (messages) {
-    console.log(messages);
     _(messages)
       .keys()
       .forEach((k) => {
@@ -93,6 +93,13 @@ class ChatStore {
   authChanged (user) {
     this.setState({
       user: user
+    });
+  }
+
+  @bind(Actions.decreaseTime)
+  decreaseTime () {
+    this.setState({
+      timeleft: this.state.timeleft - 1
     });
   }
 }
