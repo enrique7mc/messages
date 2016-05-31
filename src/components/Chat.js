@@ -3,26 +3,39 @@ import ChannelList from './ChannelList';
 import CountdownContainer from './CountdownContainer';
 import MessageBox from './MessageBox';
 import MessageList from './MessageList';
+import connectToStores from 'alt-utils/lib/connectToStores';
+import CountdownStore from '../stores/CountdownStore';
 
-const Chat = (props) => {
-  const containerStyle = {
-    display: 'flex',
-    flowFlow: 'row wrap',
-    maxWidth: 1200,
-    width: '100%',
-    margin: '30px auto 30px'
-  };
+class Chat extends Component {
+  constructor (props) {
+    super(props);
+  }
 
-  return (
-    <div>
-      <div style={ containerStyle }>
-        <ChannelList { ...props } />
-        <MessageList />
+    return [CountdownStore];
+  }
+
+  static getPropsFromStores() {
+    return CountdownStore.getState();
+
+  render () {
+    const containerStyle = {
+      display: 'flex',
+      flowFlow: 'row wrap',
+      maxWidth: 1200,
+      width: '100%',
+      margin: '30px auto 30px'
+    };
+
+    return (
+      <div>
+        <div style={ containerStyle }>
+          <MessageList />
+        </div>
+        <MessageBox />
+        <CountdownContainer timeleft={ this.props.timeleft } />
       </div>
-      <MessageBox />
-      <CountdownContainer timeleft={ 298 } />
-    </div>
-  );
+    );
+  }
 }
 
 export default Chat;

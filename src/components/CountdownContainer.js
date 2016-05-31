@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Actions from '../actions';
 import Countdown from './Countdown';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -11,7 +12,7 @@ export default class CountdownContainer extends Component {
   }
 
   onClick () {
-    console.log('start');
+    Actions.decreaseTime();
   }
 
   render() {

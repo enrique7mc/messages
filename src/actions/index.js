@@ -28,7 +28,7 @@ class Actions {
     }
   }
 
-  authChanged(browserHistory) {
+  authChanged (browserHistory) {
     return (dispatch) => {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -38,6 +38,12 @@ class Actions {
           console.log('no user');
         }
       });
+    }
+  }
+
+  decreaseTime () {
+    return (dispatch) => {
+      dispatch();
     }
   }
 }

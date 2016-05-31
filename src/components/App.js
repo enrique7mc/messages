@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount () {
-    Actions.authChanged(browserHistory);    
+    Actions.authChanged(browserHistory);
     /* this.firebaseRef.on('child_removed', (data) => {
       // check this later
       delete this.state.messages[data.key];
