@@ -59,24 +59,6 @@ class ChatStore {
    });
   }
 
-  @bind(Actions.channelOpened)
-  channelOpened (selectedChannel) {
-    // TODO: avoid modify this.state directly
-    _(this.state.channels)
-      .values()
-      .forEach((channel) => {
-        channel.selected = false;
-      });
-
-    selectedChannel.selected = true;
-    this.setState({
-      channels: this.state.channels,
-      selectedChannel
-    });
-
-    setTimeout(this.getInstance().getMessages, 100);
-  }
-
   @bind(Actions.channelsReceived)
   receivedChannels(channels) {
     let selectedChannel;
@@ -90,7 +72,7 @@ class ChatStore {
         if (channels[key].selected) {
           console.log('selected: ' + key);
           selectedChannel = channels[key];
-        }        
+        }
       });
 
     this.setState({
@@ -103,6 +85,13 @@ class ChatStore {
 
   @bind(Actions.login)
   login (user) {
+    this.setState({
+      user: user
+    });
+  }
+
+  @bind(Actions.authChanged)
+  authChanged (user) {
     this.setState({
       user: user
     });

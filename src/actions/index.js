@@ -8,7 +8,6 @@ class Actions {
       'channelsFailed',
       'messagesReceived',
       'messagesFailed',
-      'channelOpened',
       'messagesLoading',
       'sendMessage',
       'messageSendSuccess',
@@ -20,11 +19,24 @@ class Actions {
   login (browserHistory) {
     return (dispatch) => {
       var provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider).then(function(result) {        
+      firebase.auth().signInWithPopup(provider).then(function(result) {
         dispatch(result.user);
         browserHistory.push('/chat');
       }).catch(function(error) {
         console.log(error.message);
+      });
+    }
+  }
+
+  authChanged(browserHistory) {
+    return (dispatch) => {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          dispatch(user);
+          browserHistory.push('/chat');
+        } else {
+          console.log('no user');
+        }
       });
     }
   }

@@ -3,6 +3,8 @@ import AppBar from 'material-ui/AppBar';
 import firebase from '../services/firebaseService';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Actions from '../actions';
+import { browserHistory } from 'react-router';
 
 class App extends Component {
   constructor () {
@@ -10,21 +12,8 @@ class App extends Component {
   }
 
   componentDidMount () {
-    /* this.firebaseRef = this.database.ref('messages');
-    this.firebaseRef.off();
-    this.firebaseRef.on('child_added', (data) => {
-      if(this.state.messages[data.key]) {
-        return;
-      }
-
-      let messageVal = data.val();
-      let setUpdate = {};
-      setUpdate[data.key] = { $set: messageVal }
-      let newState = update(this.state.messages, setUpdate);
-      this.setState({ messages: newState});
-    });
-
-    this.firebaseRef.on('child_removed', (data) => {
+    Actions.authChanged(browserHistory);    
+    /* this.firebaseRef.on('child_removed', (data) => {
       // check this later
       delete this.state.messages[data.key];
       this.setState({ messages: this.state.messages });

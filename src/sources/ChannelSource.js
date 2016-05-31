@@ -4,7 +4,7 @@ const firebaseRef = firebase.database().ref('channels');
 
 let ChannelSource = {
   getChannels: {
-    remote (state, selectedChannelKey) {      
+    remote (state, selectedChannelKey) {
       return new Promise((resolve, reject) => {
         firebaseRef.once('value').then((data) => {
           let channels = data.val();
