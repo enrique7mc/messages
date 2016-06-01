@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ChannelList from './ChannelList';
-import CountdownContainer from './CountdownContainer';
+import Timer from './Timer';
 import MessageBox from './MessageBox';
 import MessageList from './MessageList';
 import connectToStores from 'alt-utils/lib/connectToStores';
@@ -28,7 +28,7 @@ class Chat extends Component {
       width: '100%',
       margin: '30px auto 30px'
     };
-
+    
     return (
       <div>
         <div style={ containerStyle }>
@@ -36,7 +36,7 @@ class Chat extends Component {
           <MessageList { ...this.props } />
         </div>
         <MessageBox />
-        <CountdownContainer timeleft={ this.props.timeleft } />
+        <Timer time={ this.props.time } isOn={ this.props.isOn } />
       </div>
     );
   }

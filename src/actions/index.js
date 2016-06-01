@@ -41,9 +41,22 @@ class Actions {
     }
   }
 
-  decreaseTime () {
+  startTimer (offset) {
+    console.log('2. Actions startTimer');
+    return (dispatch) => {
+      dispatch(offset);
+    }
+  }
+
+  stopTimer () {
     return (dispatch) => {
       dispatch();
+    }
+  }
+
+  tick (time, offset) {
+    return (dispatch) => {
+      dispatch(time, offset);
     }
   }
 }

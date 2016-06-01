@@ -6,6 +6,11 @@ import MessageSource from '../sources/MessageSource';
 import _ from 'lodash';
 import update from 'react-addons-update';
 
+// UTILITIES
+const delay = timeout => (new Promise(resolve => {
+  setTimeout(resolve, timeout)
+}))
+
 @datasource(ChannelSource, MessageSource)
 @decorate(alt)
 class ChatStore {
@@ -14,7 +19,8 @@ class ChatStore {
       user: null,
       messages: null,
       messagesLoading: true,
-      timeleft: 299
+      isOn: false,
+      time: 0
     };
   }
 
@@ -97,10 +103,28 @@ class ChatStore {
     });
   }
 
-  @bind(Actions.decreaseTime)
-  decreaseTime () {
+  @bind(Actions.startTimer)
+  startTimer (offset) {
+    console.log('3. Store startTimer offset: ' + offset);
     this.setState({
-      timeleft: this.state.timeleft - 1
+      isOn: true,
+      offset: offset
+    });
+  }
+
+  @bind(Actions.stopTimer)
+  stopTimer () {
+    this.setState({
+      isOn: false,
+      time: 0
+    });
+  }
+
+  @bind(Actions.tick)
+  tick (time, offset) {    
+    this.setState({
+      time: this.state.time + (time - this.state.offset),
+      offset: time
     });
   }
 }
