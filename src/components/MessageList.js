@@ -10,6 +10,10 @@ export default class MessageList extends Component {
     super(props);
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    return this.props.messages !== nextProps.messages;
+  }
+
   render () {
     let messagesNodes = null;
     let { messages, messagesLoading } = this.props;
@@ -40,7 +44,7 @@ export default class MessageList extends Component {
     const cardStyle = {
       flexGrow: 1,
       marginLeft: 30,
-      overflowY: 'auto'      
+      overflowY: 'auto'
     };
 
     return (

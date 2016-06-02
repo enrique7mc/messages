@@ -18,7 +18,7 @@ const Login = (props) => {
   return (
     <Card style={ cardStyle }>
       <CardText style={{ 'textAlign': 'center' }}>
-        To start chatting away, please log in with your Google account.
+        Inicia sesión con tu cuenta de Google.
       </CardText>
       <RaisedButton style={{ display: 'block', }}
                     onClick={ onClick }

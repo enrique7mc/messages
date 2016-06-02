@@ -12,6 +12,10 @@ export default class MessageBox extends Component {
     }
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    return this.state.message !== nextState.message;
+  }
+
   onChange (e) {
     this.setState({
       message: e.target.value
@@ -46,7 +50,7 @@ export default class MessageBox extends Component {
       fontSize: 14,
       outline: 'auto 0px'
     }
-
+    console.log('message box');
     return (
       <Card style={ cardStyle }>
         <textarea style={ textAreaStyle }

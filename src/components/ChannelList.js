@@ -15,6 +15,10 @@ export default class ChannelList extends Component {
     ChatStore.getChannels(this.selectedChannel);
   }
 
+  shouldComponentUpdate (nextProps, nextState) {
+    return this.props.channels !== nextProps.channels;
+  }
+
   componentWillReceiveProps (nextProps) {
     if (this.selectedChannel !== nextProps.params.channel) {
       this.selectedChannel = nextProps.params.channel;
@@ -53,7 +57,7 @@ export default class ChannelList extends Component {
         );
       })
       .value();
-
+    console.log('channelist');
     return (
       <Card style={ cardStyle }>
         <List style={{backgroundColor: '#FFFFFF'}}>

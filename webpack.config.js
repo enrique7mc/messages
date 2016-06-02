@@ -13,6 +13,9 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/'
   },
+  devServer: {
+     headers: { "Access-Control-Allow-Origin": "*" }
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
