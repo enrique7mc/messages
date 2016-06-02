@@ -3,6 +3,7 @@ import Actions from '../actions';
 import { decorate, bind, datasource } from 'alt-utils/lib/decorators';
 import ChannelSource from '../sources/ChannelSource';
 import MessageSource from '../sources/MessageSource';
+import TimerSource from '../sources/TimerSource';
 import _ from 'lodash';
 import update from 'react-addons-update';
 
@@ -11,7 +12,7 @@ const delay = timeout => (new Promise(resolve => {
   setTimeout(resolve, timeout)
 }))
 
-@datasource(ChannelSource, MessageSource)
+@datasource(ChannelSource, MessageSource, TimerSource)
 @decorate(alt)
 class ChatStore {
   constructor () {
@@ -45,11 +46,16 @@ class ChatStore {
 
   @bind(Actions.sendMessage)
   sendMessage(message) {
-    console.log('Chat store: sendMessage');
+    console.log('2. Chat store: sendMessage');
     this.setState({
       message: message
     });
     setTimeout(this.getInstance().sendMessage, 10);
+  }
+
+  @bind(Actions.messageSendSuccess)
+  messageSendSuccess() {
+    console.log('4. Chatstore message send success');
   }
 
   @bind(Actions.messagesReceived)
@@ -105,11 +111,30 @@ class ChatStore {
 
   @bind(Actions.startTimer)
   startTimer (offset) {
-    console.log('3. Store startTimer offset: ' + offset);
-    this.setState({
-      isOn: true,
-      offset: offset
-    });
+    console.log('2. ChatStore startTimer');
+    if (!this.state.isOn) {
+      this.setState({
+        isOn: true,
+        offset: offset
+      });
+      setTimeout(this.getInstance().saveInitialTime, 10);
+    }
+  }
+
+  @bind(Actions.timeReceived)
+  receivedTime (initialTime) {
+    console.log('ChatStore receivedTime offset: ' + initialTime.offset);
+    if (initialTime.offset) {
+      this.setState({
+        isOn: true,
+        offset: initialTime.offset
+      });
+    } else {
+      this.setState({
+        isOn: false,
+        time: 0
+      });
+    }
   }
 
   @bind(Actions.stopTimer)
@@ -121,7 +146,7 @@ class ChatStore {
   }
 
   @bind(Actions.tick)
-  tick (time, offset) {    
+  tick (time, offset) {
     this.setState({
       time: this.state.time + (time - this.state.offset),
       offset: time

@@ -12,6 +12,10 @@ class Chat extends Component {
     super(props);
   }
 
+  componentDidMount () {
+    ChatStore.getInitialTime();
+  }
+
   static getStores () {
     return [ChatStore];
   }
@@ -28,7 +32,7 @@ class Chat extends Component {
       width: '100%',
       margin: '30px auto 30px'
     };
-    
+
     return (
       <div>
         <div style={ containerStyle }>

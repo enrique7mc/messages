@@ -12,7 +12,9 @@ class Actions {
       'sendMessage',
       'messageSendSuccess',
       'messageSendError',
-      'messageReceived'
+      'messageReceived',
+      'startTimer',
+      'timeReceived'
     );
   }
 
@@ -41,12 +43,12 @@ class Actions {
     }
   }
 
-  startTimer (offset) {
-    console.log('2. Actions startTimer');
-    return (dispatch) => {
-      dispatch(offset);
-    }
-  }
+  // startTimer (offset) {
+  //   // console.log('2. Actions startTimer');
+  //   return (dispatch) => {
+  //     dispatch(offset);
+  //   }
+  // }
 
   stopTimer () {
     return (dispatch) => {
