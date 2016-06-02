@@ -29,8 +29,9 @@ class Chat extends Component {
       display: 'flex',
       flowFlow: 'row wrap',
       maxWidth: 1200,
+      height: 300,
       width: '100%',
-      margin: '30px auto 30px'
+      margin: '30px auto'
     };
 
     return (

@@ -1,0 +1,149 @@
+{
+  "channels" : {
+    "firebase" : {
+      "name" : "firebase"
+    },
+    "flux" : {
+      "name" : "flux"
+    },
+    "react" : {
+      "name" : "react"
+    },
+    "webpack" : {
+      "name" : "webpack"
+    }
+  },
+  "initialTime" : {
+    "time": 0
+  },
+  "messages" : {
+    "firebase" : {
+      "-KIyd6KxKUA3DRyOkVVL" : {
+        "author" : "Enrique Munguía",
+        "date" : "Sun, 29 May 2016 22:31:12 GMT",
+        "message" : "this is a new message\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "-KIyheJsW2YrT_fopKnl" : {
+        "author" : "Enrique Munguía",
+        "date" : "Sun, 29 May 2016 22:51:04 GMT",
+        "message" : "my new message\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "-KIyhu2_5n0yGsK2SUA9" : {
+        "author" : "Enrique Munguía",
+        "date" : "Sun, 29 May 2016 22:52:08 GMT",
+        "message" : "hello there\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "-KIyi4LL7XM8dQpVT7Fn" : {
+        "author" : "Enrique Munguía",
+        "date" : "Sun, 29 May 2016 22:52:54 GMT",
+        "message" : ":D\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "-KJ-2vvXpbdATW2mzMmQ" : {
+        "author" : "Enrique Munguía",
+        "date" : "Mon, 30 May 2016 05:08:00 GMT",
+        "message" : "hello world\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "-KJ3gB34hfZx8gJD1HOZ" : {
+        "author" : "Enrique Munguía",
+        "date" : "Tue, 31 May 2016 02:42:20 GMT",
+        "message" : "new message\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "-KJ9R_8K11379RJG27tg" : {
+        "author" : "Enrique Munguía",
+        "date" : "Wed, 01 Jun 2016 05:31:52 GMT",
+        "message" : "live\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      }
+    },
+    "flux" : {
+      "-KIzWGdbW0d4hQPQhdYc" : {
+        "author" : "Enrique Munguía",
+        "date" : "Mon, 30 May 2016 02:36:34 GMT",
+        "message" : "flux message\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "flux_first" : {
+        "author" : "Hendrik Swanepoel",
+        "date" : "Wed, 08 Jul 2015 18:14:27 GMT",
+        "message" : "First message in flux",
+        "profilePic" : "http://www.gravatar.com/avatar/a424e1b0ab3a8dee82c25ae0f0804107?s=48&d=identicon"
+      },
+      "flux_second" : {
+        "author" : "Stewart Scott",
+        "date" : "Wed, 08 Jul 2015 18:14:32 GMT",
+        "message" : "Second message in flux",
+        "profilePic" : "http://www.gravatar.com/avatar/f544faf10969339692d6d0474050f8fe?s=48&d=identicon"
+      }
+    },
+    "react" : {
+      "-KJDmX0csn-QSDtLhavl" : {
+        "author" : "Enrique Munguía",
+        "date" : "Thu, 02 Jun 2016 01:46:16 GMT",
+        "message" : "test message\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "-KJDn6CPVntZrSlme7_R" : {
+        "author" : "Enrique Munguía",
+        "date" : "Thu, 02 Jun 2016 01:48:48 GMT",
+        "message" : "react rocks\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "react_first" : {
+        "author" : "Hendrik Swanepoel",
+        "date" : "Wed, 08 Jul 2015 18:14:27 GMT",
+        "message" : "First message in react",
+        "profilePic" : "http://www.gravatar.com/avatar/a424e1b0ab3a8dee82c25ae0f0804107?s=48&d=identicon"
+      },
+      "react_second" : {
+        "author" : "Stewart Scott",
+        "date" : "Wed, 08 Jul 2015 18:14:32 GMT",
+        "message" : "Second message in react",
+        "profilePic" : "http://www.gravatar.com/avatar/f544faf10969339692d6d0474050f8fe?s=48&d=identicon"
+      }
+    },
+    "webpack" : {
+      "-KJ3v_thQjsSs9c1vEW-" : {
+        "author" : "Enrique Munguía",
+        "date" : "Tue, 31 May 2016 03:49:38 GMT",
+        "message" : "new webpack message\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "-KJ4Zacn4TFWdezn7HWU" : {
+        "author" : "Enrique Munguía",
+        "date" : "Tue, 31 May 2016 06:48:49 GMT",
+        "message" : "sadsad\n",
+        "profilePic" : "https://lh6.googleusercontent.com/-GgYpZeHBJeo/AAAAAAAAAAI/AAAAAAAACA8/kGSGLa0LXZ8/s96-c/photo.jpg",
+        "userId" : "wz4uasCsRyWY53t1veztVbut82Y2"
+      },
+      "wp_first" : {
+        "author" : "Hendrik Swanepoel",
+        "date" : "Wed, 08 Jul 2015 18:14:27 GMT",
+        "message" : "First message in webpack",
+        "profilePic" : "http://www.gravatar.com/avatar/a424e1b0ab3a8dee82c25ae0f0804107?s=48&d=identicon"
+      },
+      "wp_second" : {
+        "author" : "Stewart Scott",
+        "date" : "Wed, 08 Jul 2015 18:14:32 GMT",
+        "message" : "Second message in webpack",
+        "profilePic" : "http://www.gravatar.com/avatar/f544faf10969339692d6d0474050f8fe?s=48&d=identicon"
+      }
+    }
+  }
+}

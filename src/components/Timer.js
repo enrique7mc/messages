@@ -1,15 +1,21 @@
 import React from 'react';
 import Actions from '../actions';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Timer extends React.Component {
   constructor() {
     super();
     this.start = this.start.bind(this);
     this.stop = this.stop.bind(this);
+    this.other = this.other.bind(this);
   }
 
-  componentDidMount () {
+  /* componentDidMount () {
     this.start();
+  }*/
+
+  other () {
+    this._interval = requestAnimationFrame(this.progress);
   }
 
 	componentWillUnmount() {
@@ -18,9 +24,7 @@ class Timer extends React.Component {
 
   start() {
 		this._interval = requestAnimationFrame(this.progress);
-
-    //Actions.startTimer(Date.now());
-    Actions.startTimer(1464757773962);
+    Actions.startTimer(Date.now());
   }
 
 	progress = () => {
@@ -54,12 +58,28 @@ class Timer extends React.Component {
   }
 
   render() {
+    const style = {
+      margin: 5,
+    };
+
+    const containerStyle = {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+    };
+
     return (
-      <div>
+      <div style={ containerStyle }>
         <h1>Time: {this.format(this.props.time)}</h1>
-        <button onClick={this.props.isOn ? this.stop : this.start}>
-          { this.props.isOn ? 'Stop' : 'Start' }
-        </button>
+        <RaisedButton label={ this.props.isOn ? 'Stop' : 'Start' }
+          onClick={this.props.isOn ? this.stop : this.start}
+          primary={true} style={style} />
+
+        <RaisedButton label='Other'
+          onClick={this.other}
+          primary={true} style={style} />
+
       </div>
     );
   }

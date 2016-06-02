@@ -34,9 +34,7 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={ getMuiTheme() }>
         <div>
-          <AppBar
-              title="Awesome Chat"
-              iconClassNameRight="muidocs-icon-navigation-expand-more" />
+          <AppBar title="Awesome Chat" />
           { this.props.children }
         </div>
       </MuiThemeProvider>

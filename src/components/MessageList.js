@@ -39,7 +39,8 @@ export default class MessageList extends Component {
 
     const cardStyle = {
       flexGrow: 1,
-      marginLeft: 30
+      marginLeft: 30,
+      overflowY: 'auto'      
     };
 
     return (
