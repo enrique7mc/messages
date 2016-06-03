@@ -7,15 +7,12 @@ class Timer extends React.Component {
     super();
     this.start = this.start.bind(this);
     this.stop = this.stop.bind(this);
-    this.other = this.other.bind(this);
   }
 
-  /* componentDidMount () {
-    this.start();
-  }*/
-
-  other () {
-    this._interval = requestAnimationFrame(this.progress);
+  componentDidMount () {
+    if (this.props.offset > 0) {
+      this._interval = requestAnimationFrame(this.progress);
+    }
   }
 
 	componentWillUnmount() {
@@ -75,11 +72,6 @@ class Timer extends React.Component {
         <RaisedButton label={ this.props.isOn ? 'Stop' : 'Start' }
           onClick={this.props.isOn ? this.stop : this.start}
           primary={true} style={style} />
-
-        <RaisedButton label='Other'
-          onClick={this.other}
-          primary={true} style={style} />
-
       </div>
     );
   }

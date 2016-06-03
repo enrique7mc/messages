@@ -32,12 +32,14 @@ class TimerStore {
     if (initialTime.offset) {
       this.setState({
         isOn: true,
-        offset: initialTime.offset
+        offset: initialTime.offset,
+        offsetFetched: true
       });
     } else {
       this.setState({
         isOn: false,
-        time: 0
+        time: 0,
+        offsetFetched: true
       });
     }
   }
