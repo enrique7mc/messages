@@ -19,10 +19,10 @@ let TimerSource = {
         resolve();
       });
     },
-    success: Actions.messageSendSuccess,
-    error: Actions.messageSendError
+    success: Actions.messageSuccess,
+    error: Actions.messageError
   },
-  getInitialTime: {    
+  getInitialTime: {
     remote (state) {
       return new Promise((resolve, reject) => {
         firebaseRef.once('value').then((data) => {
@@ -34,7 +34,7 @@ let TimerSource = {
       })
     },
     success: Actions.timeReceived,
-    error: Actions.messageSendError
+    error: Actions.messageError
   }
 };
 

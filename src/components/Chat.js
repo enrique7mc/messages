@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ChannelList from './ChannelList';
-import Timer from './Timer';
+import TimerContainer from './TimerContainer';
 import MessageBox from './MessageBox';
 import MessageList from './MessageList';
 import connectToStores from 'alt-utils/lib/connectToStores';
@@ -10,10 +10,6 @@ import ChatStore from '../stores/ChatStore';
 class Chat extends Component {
   constructor (props) {
     super(props);
-  }
-
-  componentDidMount () {
-    ChatStore.getInitialTime();
   }
 
   static getStores () {
@@ -41,7 +37,7 @@ class Chat extends Component {
           <MessageList { ...this.props } />
         </div>
         <MessageBox />
-        <Timer time={ this.props.time } isOn={ this.props.isOn } />
+        <TimerContainer />
       </div>
     );
   }

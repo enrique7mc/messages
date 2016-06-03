@@ -50,7 +50,6 @@ export default class MessageBox extends Component {
       fontSize: 14,
       outline: 'auto 0px'
     }
-    console.log('message box');
     return (
       <Card style={ cardStyle }>
         <textarea style={ textAreaStyle }

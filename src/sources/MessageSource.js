@@ -23,8 +23,8 @@ let MessageSource = {
         resolve();
       });
     },
-    success: Actions.messageSendSuccess,
-    error: Actions.messageSendError
+    success: Actions.messageSuccess,
+    error: Actions.messageError
   },
   getMessages: {
     remote (state) {

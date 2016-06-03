@@ -10,8 +10,8 @@ class Actions {
       'messagesFailed',
       'messagesLoading',
       'sendMessage',
-      'messageSendSuccess',
-      'messageSendError',
+      'messageSuccess',
+      'messageError',
       'messageReceived',
       'startTimer',
       'timeReceived'

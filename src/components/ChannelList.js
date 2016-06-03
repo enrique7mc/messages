@@ -57,7 +57,7 @@ export default class ChannelList extends Component {
         );
       })
       .value();
-    console.log('channelist');
+      
     return (
       <Card style={ cardStyle }>
         <List style={{backgroundColor: '#FFFFFF'}}>
