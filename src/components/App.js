@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import firebase from '../services/firebaseService';
+import muiTheme from '../config/themeConfig';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Actions from '../actions';
@@ -32,9 +33,9 @@ class App extends Component {
 
   render() {
     return (
-      <MuiThemeProvider muiTheme={ getMuiTheme() }>
+      <MuiThemeProvider muiTheme={ muiTheme }>
         <div>
-          <AppBar title="Awesome Chat" />
+          <AppBar title='Pitch Time' />
           { this.props.children }
         </div>
       </MuiThemeProvider>
