@@ -36,10 +36,10 @@ let MessageSource = {
         state.selectedChannel.key);
       return new Promise((resolve, reject) => {
         firebaseRef.once('value').then((data) => {
-          let messages = data.val();
+          let messages = data.val() || {};          
           resolve(messages);
 
-          firebaseRef.on('child_added', (msg) => {            
+          firebaseRef.on('child_added', (msg) => {
             let messageVal = msg.val();
             messageVal.key = msg.key;
             Actions.messageReceived(messageVal);

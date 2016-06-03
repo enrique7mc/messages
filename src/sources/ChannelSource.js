@@ -14,11 +14,27 @@ let ChannelSource = {
             selectedChannel.selected = true;
           }
           resolve(channels);
+          // firebaseRef.on('child_removed', (data) => {
+          //   let channelVal = data.val();
+          //   channelVal.key = data.key;
+          //   Actions.channelDeleted(channelVal)
+          // });
         });
       })
     },
     success: Actions.channelsReceived,
     error: Actions.channelsFailed
+  },
+  deleteChannel: {
+    remote (state, channelKey) {
+      return new Promise((resolve, reject) => {
+        firebase.database().ref(`channels/${channelKey}`).remove();
+        firebase.database().ref(`messages/${channelKey}`).remove();
+        resolve();
+      });
+    },
+    success: Actions.messageSuccess,
+    error: Actions.messageError
   }
 };
 

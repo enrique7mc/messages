@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Actions from '../actions';
 import CircularProgress from 'material-ui/CircularProgress';
 import ChatStore from '../stores/ChatStore';
 import Channel from './Channel';
@@ -15,15 +16,15 @@ export default class ChannelList extends Component {
     ChatStore.getChannels(this.selectedChannel);
   }
 
-  shouldComponentUpdate (nextProps, nextState) {
-    return this.props.channels !== nextProps.channels;
-  }
-
   componentWillReceiveProps (nextProps) {
     if (this.selectedChannel !== nextProps.params.channel) {
       this.selectedChannel = nextProps.params.channel;
       ChatStore.getChannels(this.selectedChannel);
     }
+  }
+
+  deleteChannel (channelKey) {
+    Actions.deleteChannel(channelKey);
   }
 
   render () {
@@ -53,11 +54,11 @@ export default class ChannelList extends Component {
       .map((k) => {
         let channel = channels[k];
         return (
-          <Channel key={ k } channel={ channel } />
+          <Channel key={ k } channel={ channel } delete={ this.deleteChannel }/>
         );
       })
       .value();
-      
+
     return (
       <Card style={ cardStyle }>
         <List style={{backgroundColor: '#FFFFFF'}}>

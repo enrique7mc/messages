@@ -14,7 +14,9 @@ class Actions {
       'messageError',
       'messageReceived',
       'startTimer',
-      'timeReceived'
+      'timeReceived',
+      'deleteChannel',
+      'channelDeleted'
     );
   }
 

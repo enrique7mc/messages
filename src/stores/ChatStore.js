@@ -37,8 +37,31 @@ class ChatStore {
     this.setState({ messages: newState});
   }
 
+  // @bind(Actions.channelDeleted)
+  // channelDeleted(channel) {
+  //   console.log(channel);
+  //
+  //   console.log('Before delete');
+  //   console.log(this.state.channels);
+  //   delete this.state.channels[channel.key];
+  //   console.log('After delete');
+  //   console.log(this.state.channels);
+  //   this.setState({ channels: this.state.channels });
+  // }
+
+  @bind(Actions.deleteChannel)
+  deleteChannel (channelKey) {
+    console.log('delete channel ' + channelKey);
+    delete this.state.channels[channelKey];
+    this.setState({
+      channels: this.state.channels,
+      selectedChannel: _.keys(this.state.channels)[0]
+    });
+    setTimeout(this.getInstance().deleteChannel.bind(null, channelKey), 10);
+  }
+
   @bind(Actions.sendMessage)
-  sendMessage(message) {    
+  sendMessage(message) {
     this.setState({
       message: message
     });

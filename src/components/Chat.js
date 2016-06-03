@@ -12,6 +12,12 @@ class Chat extends Component {
     super(props);
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (this.props !== nextProps) {
+      // this.context.router.push(`/chat/${nextProps.selectedChannel.key}`);
+    }
+  }
+
   static getStores () {
     return [ChatStore];
   }
@@ -42,5 +48,9 @@ class Chat extends Component {
     );
   }
 }
+
+Chat.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 export default Chat;
