@@ -32,10 +32,20 @@ class TimerContainer extends Component {
       width: 60
     };
 
+    const containerStyle = {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+    };
+
     if (this.props.offsetFetched) {
       return (
-        <Timer time={ this.props.time } isOn={ this.props.isOn }
-          offset={ this.props.offset } />
+        <div style={ containerStyle }>
+          <p>Current Channel</p>
+          <Timer style={ containerStyle } time={ this.props.time } isOn={ this.props.isOn }
+            offset={ this.props.offset } />
+        </div>
       );
     }
 

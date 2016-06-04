@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Actions from '../actions';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class Timer extends React.Component {
+class Timer extends Component {
   constructor() {
     super();
     this.start = this.start.bind(this);
@@ -12,6 +12,10 @@ class Timer extends React.Component {
   componentDidMount () {
     if (this.props.offset > 0) {
       this._interval = requestAnimationFrame(this.progress);
+      setInterval(() => {
+        console.log('10 seconds');
+        Actions.minuteCompleted();
+      }, 10000);
     }
   }
 
@@ -59,15 +63,8 @@ class Timer extends React.Component {
       margin: 5,
     };
 
-    const containerStyle = {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center'
-    };
-
     return (
-      <div style={ containerStyle }>
+      <div style={ this.props.style }>
         <h1>Time: {this.format(this.props.time)}</h1>
         <RaisedButton label={ this.props.isOn ? 'Stop' : 'Start' }
           onClick={this.props.isOn ? this.stop : this.start}
@@ -76,5 +73,11 @@ class Timer extends React.Component {
     );
   }
 }
+
+Timer.propTypes = {
+  time: PropTypes.number,
+  isOn: PropTypes.bool,
+  offset: PropTypes.number
+};
 
 export default Timer;

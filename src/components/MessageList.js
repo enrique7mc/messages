@@ -14,6 +14,13 @@ export default class MessageList extends Component {
     return this.props.messages !== nextProps.messages;
   }
 
+  // componentDidUpdate () {
+  //   console.log('update');
+  //   var list = this.refs.messageList;
+  //   console.log(list);
+  //   list.scrollTop = list.scrollHeight;
+  // }
+
   render () {
     let messagesNodes = null;
     let { messages, messagesLoading } = this.props;
@@ -50,7 +57,7 @@ export default class MessageList extends Component {
 
     return (
       <Card style={ cardStyle }>
-        <List>
+        <List ref='messageList'>
           { messagesNodes }
         </List>
       </Card>

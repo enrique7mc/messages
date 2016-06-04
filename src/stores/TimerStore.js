@@ -16,7 +16,6 @@ class TimerStore {
 
   @bind(Actions.startTimer)
   startTimer (offset) {
-    console.log('2. TimerStore startTimer');
     if (!this.state.isOn) {
       this.setState({
         isOn: true,
@@ -28,7 +27,6 @@ class TimerStore {
 
   @bind(Actions.timeReceived)
   receivedTime (initialTime) {
-    console.log('TimerStore receivedTime offset: ' + initialTime.offset);
     if (initialTime.offset) {
       this.setState({
         isOn: true,

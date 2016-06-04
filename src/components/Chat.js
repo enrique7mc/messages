@@ -27,6 +27,7 @@ class Chat extends Component {
   }
 
   render () {
+    console.log('Current channel: ' + this.props.currentChannel);
     const containerStyle = {
       display: 'flex',
       flowFlow: 'row wrap',

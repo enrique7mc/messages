@@ -4,7 +4,7 @@ import { ListItem } from 'material-ui/List';
 
 const Message = (props) => {
   let secondaryStyle = {
-    fontSize: '11',
+    fontSize: '11px',
     color: '#C3C3C3',
     fontStyle: 'italic'
   };
