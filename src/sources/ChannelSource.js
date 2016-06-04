@@ -8,6 +8,11 @@ let ChannelSource = {
       return new Promise((resolve, reject) => {
         firebaseRef.once('value').then((data) => {
           let channels = data.val();
+          if(!channels) {
+            resolve({});
+            return;
+          }
+
           selectedChannelKey = selectedChannelKey || _.keys(channels)[0];
           let selectedChannel = channels[selectedChannelKey];
           if (selectedChannel) {
