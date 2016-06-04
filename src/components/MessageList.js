@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+var ReactDOM = require('react-dom');
 import Message from './Message';
 import CircularProgress from 'material-ui/CircularProgress';
 import Card from 'material-ui/Card';
@@ -14,12 +15,10 @@ export default class MessageList extends Component {
     return this.props.messages !== nextProps.messages;
   }
 
-  // componentDidUpdate () {
-  //   console.log('update');
-  //   var list = this.refs.messageList;
-  //   console.log(list);
-  //   list.scrollTop = list.scrollHeight;
-  // }
+  componentDidUpdate () {
+    var domNode = ReactDOM.findDOMNode(this.refs.card);
+    domNode.scrollTop = domNode.scrollHeight;
+  }
 
   render () {
     let messagesNodes = null;
@@ -56,8 +55,8 @@ export default class MessageList extends Component {
     };
 
     return (
-      <Card style={ cardStyle }>
-        <List ref='messageList'>
+      <Card style={ cardStyle } ref='card'>
+        <List>
           { messagesNodes }
         </List>
       </Card>
