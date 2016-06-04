@@ -27,7 +27,6 @@ class Chat extends Component {
   }
 
   render () {
-    console.log('Current channel: ' + this.props.currentChannel);
     const containerStyle = {
       display: 'flex',
       flowFlow: 'row wrap',
@@ -44,7 +43,7 @@ class Chat extends Component {
           <MessageList { ...this.props } />
         </div>
         <MessageBox />
-        <TimerContainer />
+        <TimerContainer channels={ this.props.channels }/>
       </div>
     );
   }

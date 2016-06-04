@@ -12,10 +12,6 @@ class Timer extends Component {
   componentDidMount () {
     if (this.props.offset > 0) {
       this._interval = requestAnimationFrame(this.progress);
-      setInterval(() => {
-        console.log('10 seconds');
-        Actions.minuteCompleted();
-      }, 10000);
     }
   }
 

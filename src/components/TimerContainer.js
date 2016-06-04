@@ -42,7 +42,6 @@ class TimerContainer extends Component {
     if (this.props.offsetFetched) {
       return (
         <div style={ containerStyle }>
-          <p>Current Channel</p>
           <Timer style={ containerStyle } time={ this.props.time } isOn={ this.props.isOn }
             offset={ this.props.offset } />
         </div>

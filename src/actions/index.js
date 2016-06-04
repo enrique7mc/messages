@@ -16,8 +16,7 @@ class Actions {
       'startTimer',
       'timeReceived',
       'deleteChannel',
-      'channelDeleted',
-      'minuteCompleted'
+      'channelDeleted'
     );
   }
 
