@@ -33,7 +33,8 @@ export default class MessageList extends Component {
           let message = messages[k];
           return (
             <Message key={ k } message={ message.message }
-              profilePic={ message.profilePic } />
+              profilePic={ message.profilePic }
+              author={ message.author } />
           );
         })
         .value();
