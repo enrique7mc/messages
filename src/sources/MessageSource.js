@@ -31,12 +31,11 @@ let MessageSource = {
       if (firebaseRef) {
         firebaseRef.off();
       }
-
-      firebaseRef = firebase.database().ref('messages/' +
-        state.selectedChannel.key);
+      let key = state.selectedChannel ? state.selectedChannel.key : '';
+      firebaseRef = firebase.database().ref('messages/' + key);
       return new Promise((resolve, reject) => {
         firebaseRef.once('value').then((data) => {
-          let messages = data.val() || {};          
+          let messages = data.val() || {};
           resolve(messages);
 
           firebaseRef.on('child_added', (msg) => {

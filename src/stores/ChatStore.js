@@ -1,5 +1,6 @@
 import alt from '../alt';
 import Actions from '../actions';
+import { browserHistory } from 'react-router';
 import { decorate, bind, datasource } from 'alt-utils/lib/decorators';
 import ChannelSource from '../sources/ChannelSource';
 import MessageSource from '../sources/MessageSource';
@@ -53,10 +54,12 @@ class ChatStore {
   deleteChannel (channelKey) {
     console.log('delete channel ' + channelKey);
     delete this.state.channels[channelKey];
+    console.log(_.keys(this.state.channels)[0]);
     this.setState({
       channels: this.state.channels,
       selectedChannel: _.keys(this.state.channels)[0]
     });
+    browserHistory.push(`/chat/${this.state.selectedChannel}`);
     setTimeout(this.getInstance().deleteChannel.bind(null, channelKey), 10);
   }
 

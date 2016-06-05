@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import firebase from '../services/firebaseService';
 import muiTheme from '../config/themeConfig';
+import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Actions from '../actions';
@@ -35,7 +36,8 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={ muiTheme }>
         <div>
-          <AppBar title='Pitch Time' />
+          <AppBar title='Pitch Time'
+            iconElementRight={<FlatButton label='Logout' />} />
           { this.props.children }
         </div>
       </MuiThemeProvider>

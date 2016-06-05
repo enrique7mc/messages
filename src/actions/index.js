@@ -32,6 +32,17 @@ class Actions {
     }
   }
 
+  loginEmail (browserHistory, email, password) {
+    return (dispatch) => {
+      firebase.auth().signInWithEmailAndPassword(email, password).then(function(result) {
+        dispatch(result.user);
+        browserHistory.push('/chat');
+      }).catch(function(error) {
+        console.log(error.message);
+      });
+    }
+  }
+
   authChanged (browserHistory) {
     return (dispatch) => {
       firebase.auth().onAuthStateChanged((user) => {
@@ -39,18 +50,12 @@ class Actions {
           dispatch(user);
           browserHistory.push('/chat');
         } else {
-          console.log('no user');
+          dispatch(user);
+          browserHistory.push('/');
         }
       });
     }
   }
-
-  // startTimer (offset) {
-  //   // console.log('2. Actions startTimer');
-  //   return (dispatch) => {
-  //     dispatch(offset);
-  //   }
-  // }
 
   stopTimer () {
     return (dispatch) => {
