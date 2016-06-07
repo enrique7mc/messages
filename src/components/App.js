@@ -32,12 +32,28 @@ class App extends Component {
     };
   }
 
+  signOut () {
+    firebase.auth().signOut();
+  }
+
+  getAppBar () {
+    let user = firebase.auth().currentUser;
+    if (user) {
+      return <AppBar title='Pitch Time'
+                iconElementRight={ <FlatButton label={ 'sign Out' }
+                                        onClick={ this.signOut } /> } />;
+    }
+
+    return <AppBar title='Pitch Time' />;
+  }
+
+  getLogoutBut
+
   render() {
     return (
       <MuiThemeProvider muiTheme={ muiTheme }>
         <div>
-          <AppBar title='Pitch Time'
-            iconElementRight={<FlatButton label='Logout' />} />
+          { this.getAppBar() }
           { this.props.children }
         </div>
       </MuiThemeProvider>
