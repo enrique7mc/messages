@@ -15,6 +15,20 @@ El desarrollo de una aplicación con React frecuentemente incluye el uso de
 otras bibliotecas como Webpack y React Router para la implementación
 de características no incluidas directamente en React JS.
 
+### Demo del proyecto
+
+Puedes acceder a la versión demo del proyecto en el siguiente [link](https://react-chat-ebab2.firebaseapp.com),
+cortesía de Firebase Hosting.
+
+Hay dos tipos de usuario
+* Administrador: puede modificar los equipos participantes e iniciar el timer para los pitch correspondientes, además de añadir comentarios. Credenciales de acceso: user: `admin@admin.com` password: `S3cur3D#`
+* Visitante: puede añadir comentarios a los equipos participantes y ver el timer en tiempo real, para ingresar es necesario usar el login con cuenta de **Google**. 
+
+## TODO (pendientes)
+* Añadir equipos desde la interfaz gráfica (actualmente es posible cargando un archivo `.json`)
+* Añadir otras formas de autenticación
+* Mejoras en el diseño
+
 ### Dependencias
 
 * React
@@ -27,15 +41,10 @@ de características no incluidas directamente en React JS.
 
 ### Uso
 
+Ejecutar de forma local con `npm`
+
 ```
 npm install
 npm start
 open http://localhost:3000
 ```
-
-### Recursos
-
-* [Demo video](http://vimeo.com/100010922)
-* [react-hot-loader on Github](https://github.com/gaearon/react-hot-loader)
-* [Integrating JSX live reload into your workflow](http://gaearon.github.io/react-hot-loader/getstarted/)
-* [Troubleshooting guide](https://github.com/gaearon/react-hot-loader/blob/master/docs/Troubleshooting.md)
