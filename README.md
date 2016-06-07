@@ -31,10 +31,10 @@ Hay dos tipos de usuario
 
 ### Dependencias
 
-* React
-* Webpack
-* React Router
-* Alt
+* [React](https://facebook.github.io/react/)
+* [Webpack](https://webpack.github.io/)
+* [React Router](https://github.com/reactjs/react-router)
+* [Alt](http://alt.js.org/)
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
 * [babel-loader](https://github.com/babel/babel-loader)
 * [react-hot-loader](https://github.com/gaearon/react-hot-loader)
