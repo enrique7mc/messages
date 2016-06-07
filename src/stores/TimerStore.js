@@ -26,7 +26,7 @@ class TimerStore {
   }
 
   @bind(Actions.timeReceived)
-  receivedTime (initialTime) {
+  timeReceived (initialTime) {
     if (initialTime.offset) {
       this.setState({
         isOn: true,
@@ -49,6 +49,7 @@ class TimerStore {
       isOn: false,
       time: 0
     });
+    setTimeout(this.getInstance().stopTimer, 10);
   }
 
   @bind(Actions.tick)

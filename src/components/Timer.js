@@ -61,7 +61,7 @@ class Timer extends Component {
 
     return (
       <div style={ this.props.style }>
-        <h1>Time: {this.format(this.props.time)}</h1>
+        <h1>Tiempo: {this.format(this.props.time)}</h1>
         { this.props.isUserAdmin ? <RaisedButton label={ this.props.isOn ? 'Stop' : 'Start' }
           onClick={this.props.isOn ? this.stop : this.start}
           primary={true} style={style} /> : '' }
