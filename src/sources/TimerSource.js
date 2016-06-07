@@ -27,11 +27,11 @@ let TimerSource = {
             let initialTime = data.val();
             resolve(initialTime);
 
-            // firebaseRef.on('child_changed', (data) => {
-            //   console.log('child_changed');
-            //   let initialTime = data.val();
-            //   Actions.timeReceived(initialTime);
-            // });
+            firebaseRef.on('child_changed', (data) => {
+              console.log('child_changed');
+              let newOffset = data.val();
+              Actions.timerChanged(newOffset);
+            });
           });
       })
     },

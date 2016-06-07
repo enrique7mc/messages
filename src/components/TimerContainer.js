@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Actions from '../actions';
-import CircularProgress from 'material-ui/CircularProgress';
 import connectToStores from 'alt-utils/lib/connectToStores';
 import TimerStore from '../stores/TimerStore';
 import Timer from './Timer';
@@ -39,7 +38,7 @@ class TimerContainer extends Component {
       alignItems: 'center'
     };
 
-    if (this.props.offsetFetched) {
+    if (this.props.offsetFetched && (this.props.isUserAdmin || this.props.offset)) {
       return (
         <div style={ containerStyle }>
           <Timer style={ containerStyle } time={ this.props.time } isOn={ this.props.isOn }
@@ -48,10 +47,7 @@ class TimerContainer extends Component {
       );
     }
 
-    return (
-      <CircularProgress style={ progressStyle } />
-    );
-
+    return <div></div>;
   }
 }
 

@@ -15,6 +15,12 @@ class Timer extends Component {
     }
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.offset === 0) {
+      cancelAnimationFrame(this._interval);
+    }
+  }
+
 	componentWillUnmount() {
 		if (this._interval) cancelAnimationFrame(this._interval);
 	}

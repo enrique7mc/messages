@@ -43,6 +43,24 @@ class TimerStore {
     }
   }
 
+  @bind(Actions.timerChanged)
+  timerChanged (newOffset) {    
+    if (newOffset) {
+      this.setState({
+        isOn: true,
+        offset: newOffset,
+        offsetFetched: true
+      });
+    } else {
+      this.setState({
+        isOn: false,
+        time: 0,
+        offset: 0,
+        offsetFetched: true
+      });
+    }
+  }
+
   @bind(Actions.stopTimer)
   stopTimer () {
     this.setState({
