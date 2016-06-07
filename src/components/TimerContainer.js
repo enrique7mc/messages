@@ -43,7 +43,7 @@ class TimerContainer extends Component {
       return (
         <div style={ containerStyle }>
           <Timer style={ containerStyle } time={ this.props.time } isOn={ this.props.isOn }
-            offset={ this.props.offset } />
+            offset={ this.props.offset } isUserAdmin={ this.props.isUserAdmin } />
         </div>
       );
     }

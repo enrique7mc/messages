@@ -54,7 +54,6 @@ class ChatStore {
   deleteChannel (channelKey) {
     console.log('delete channel ' + channelKey);
     delete this.state.channels[channelKey];
-    console.log(_.keys(this.state.channels)[0]);
     this.setState({
       channels: this.state.channels,
       selectedChannel: _.keys(this.state.channels)[0]

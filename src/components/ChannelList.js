@@ -28,7 +28,7 @@ export default class ChannelList extends Component {
   }
 
   render () {
-    let { channels } = this.props;
+    let { channels, isUserAdmin } = this.props;
     let progressStyle = {
       paddingTop: 20,
       paddingBottom: 20,
@@ -54,7 +54,8 @@ export default class ChannelList extends Component {
       .map((k) => {
         let channel = channels[k];
         return (
-          <Channel key={ k } channel={ channel } delete={ this.deleteChannel }/>
+          <Channel key={ k } channel={ channel } delete={ this.deleteChannel }
+                   isUserAdmin={ isUserAdmin }/>
         );
       })
       .value();

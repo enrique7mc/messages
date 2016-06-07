@@ -1,4 +1,5 @@
 import React from 'react';
+import Actions from '../actions';
 import { render } from 'react-dom';
 import App from '../components/App';
 import Chat from '../components/Chat';

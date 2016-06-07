@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Actions from '../actions';
 import { ListItem } from 'material-ui/List';
 import { Link } from 'react-router'
@@ -16,7 +16,7 @@ class Channel extends Component {
 
   render () {
     let style = {};
-    let { channel } = this.props;
+    let { channel, isUserAdmin } = this.props;
     if (channel.selected) {
       style.backgroundColor = '#f0f0f0';
     }
@@ -26,14 +26,20 @@ class Channel extends Component {
       color: '#155063'
     };
 
+    let icon = isUserAdmin ? <Delete onClick={ this.delete } /> : null;
+
     return (
-      <ListItem style={ style } rightIcon={<Delete onClick={ this.delete } />}>
+      <ListItem style={ style } rightIcon={ icon }>
         <Link to={`/chat/${channel.key}`} style={ linkStyle }>
           { channel.name }
         </Link>
       </ListItem>
     );
   }
+}
+
+Channel.propTypes = {
+  isUserAdmin: PropTypes.bool
 }
 
 export default Channel;

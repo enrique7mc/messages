@@ -30,6 +30,7 @@ class TimerStore {
     if (initialTime.offset) {
       this.setState({
         isOn: true,
+        time: 0,
         offset: initialTime.offset,
         offsetFetched: true
       });

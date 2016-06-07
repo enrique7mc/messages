@@ -12,18 +12,18 @@ class Chat extends Component {
     super(props);
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (this.props !== nextProps) {
-      // this.context.router.push(`/chat/${nextProps.selectedChannel.key}`);
-    }
-  }
-
   static getStores () {
     return [ChatStore];
   }
 
   static getPropsFromStores() {
     return ChatStore.getState();
+  }
+
+  isUserAdmin () {
+    if (this.props.user) {
+      return this.props.user.uid === 'goE7lZiXOVXNXTyIIn3YhiwW8Zg2';
+    }
   }
 
   render () {
@@ -39,11 +39,14 @@ class Chat extends Component {
     return (
       <div>
         <div style={ containerStyle }>
-          <ChannelList { ...this.props } />
+          <ChannelList { ...this.props }
+            isUserAdmin={ this.isUserAdmin() } />
           <MessageList { ...this.props } />
         </div>
         <MessageBox />
-        <TimerContainer channels={ this.props.channels }/>
+        <TimerContainer
+          channels={ this.props.channels }
+          isUserAdmin={ this.isUserAdmin() } />
       </div>
     );
   }
