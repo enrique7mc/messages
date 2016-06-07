@@ -92,8 +92,8 @@ class Timer extends Component {
 
     return (
       <div style={ this.props.style }>
-        <h1>{ `${this.getCurrentTeam(time)} ${this.getCurrentTeamTime(time)}` }</h1>
-        <h3>Total: {this.format(time)}</h3>
+        <h1>{ `Equipo: ${this.getCurrentTeam(time)} (${this.getCurrentTeamTime(time)})` }</h1>
+        <h2>Tiempo total: {this.format(time)}</h2>
         { isUserAdmin ? <RaisedButton label={ isOn ? 'Detener' : 'Iniciar' }
           onClick={isOn ? this.stop : this.start}
           primary={true} style={style} /> : '' }
