@@ -55,9 +55,32 @@ class Timer extends Component {
     time = new Date(time);
     let m = pad(time.getMinutes().toString(), 2);
     let s = pad(time.getSeconds().toString(), 2);
-    let ms = pad(time.getMilliseconds().toString(), 3);
 
-    return `${m} : ${s} . ${ms}`;
+    return `${m} : ${s}`;
+  }
+
+  getCurrentTeamTime (time) {
+    let dateTime = new Date(time);
+    let minutes = dateTime.getMinutes();
+    let seconds = dateTime.getSeconds();
+    let currentTime = minutes % 8;
+    if ((currentTime / 5) >= 1) {
+      return this.format(((currentTime - 5) * 1000 * 60) + (seconds * 1000));
+    } else {
+      return this.format((currentTime * 1000 * 60) + (seconds * 1000));
+    }
+  }
+
+  getCurrentTeam (time) {
+    time = new Date(time);
+    let minutes = time.getMinutes();
+    let segment = Math.floor(minutes / 8);
+    let currentTime = minutes % 8;
+    if ((currentTime / 5) >= 1) {
+      return this.props.channels[segment] + ' Q & A';
+    } else {
+      return this.props.channels[segment];
+    }
   }
 
   render() {
@@ -65,11 +88,14 @@ class Timer extends Component {
       margin: 5,
     };
 
+    let { time, isUserAdmin, isOn } = this.props;
+
     return (
       <div style={ this.props.style }>
-        <h1>Tiempo: {this.format(this.props.time)}</h1>
-        { this.props.isUserAdmin ? <RaisedButton label={ this.props.isOn ? 'Stop' : 'Start' }
-          onClick={this.props.isOn ? this.stop : this.start}
+        <h1>{ `${this.getCurrentTeam(time)} ${this.getCurrentTeamTime(time)}` }</h1>
+        <h3>Total: {this.format(time)}</h3>
+        { isUserAdmin ? <RaisedButton label={ isOn ? 'Detener' : 'Iniciar' }
+          onClick={isOn ? this.stop : this.start}
           primary={true} style={style} /> : '' }
       </div>
     );

@@ -39,8 +39,7 @@ class Chat extends Component {
     return (
       <div>
         <div style={ containerStyle }>
-          <ChannelList { ...this.props }
-            isUserAdmin={ this.isUserAdmin() } />
+          <ChannelList { ...this.props } isUserAdmin={ this.isUserAdmin() } />
           <MessageList { ...this.props } />
         </div>
         <MessageBox />

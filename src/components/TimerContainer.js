@@ -38,11 +38,20 @@ class TimerContainer extends Component {
       alignItems: 'center'
     };
 
+    let channels = _(this.props.channels)
+                    .keys()
+                    .map((k) => this.props.channels[k].name)
+                    .value();
+
     if (this.props.offsetFetched && (this.props.isUserAdmin || this.props.offset)) {
       return (
         <div style={ containerStyle }>
-          <Timer style={ containerStyle } time={ this.props.time } isOn={ this.props.isOn }
-            offset={ this.props.offset } isUserAdmin={ this.props.isUserAdmin } />
+          <Timer style={ containerStyle }
+            channels={ channels }
+            time={ this.props.time }
+            isOn={ this.props.isOn }
+            offset={ this.props.offset }
+            isUserAdmin={ this.props.isUserAdmin } />
         </div>
       );
     }
